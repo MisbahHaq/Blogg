@@ -11,19 +11,19 @@ interface BlogCardProps {
 const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
   };
 
   if (featured) {
     return (
-      <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-colors">
-        <div className="flex flex-col lg:flex-row">
+      <div className="bg-white rounded-sm overflow-hidden hover:bg-gray-750 transition-colors">
+        <div className="flex flex-col lg:flex-row text-black">
           <div className="flex-1 p-6 sm:p-8">
-            <div className="text-gray-400 text-xs sm:text-sm mb-2 uppercase tracking-wide">
+            <div className="text-black text-xs sm:text-sm mb-2 uppercase tracking-wide">
               {post.category}
             </div>
             <Link to={`/post/${post.id}`}>
@@ -31,7 +31,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
                 {post.title}
               </h2>
             </Link>
-            <div className="flex items-center gap-4 text-gray-400 text-xs sm:text-sm mb-4">
+            <div className="flex items-center gap-4 text-black text-xs sm:text-sm mb-4">
               <div className="flex items-center gap-1">
                 <User className="w-3 h-3" />
                 {post.author}
@@ -42,12 +42,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
               </div>
               <span>{formatDate(post.publishedAt)}</span>
             </div>
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 max-w-none lg:max-w-md">
+            <p className="text-black text-sm sm:text-base leading-relaxed mb-6 max-w-none lg:max-w-md">
               {post.excerpt}
             </p>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {post.tags.map((tag) => (
-                <span key={tag} className="bg-gray-700 px-2 sm:px-3 py-1 rounded-full text-xs hover:bg-gray-600 transition-colors">
+                <span key={tag} className="bg-gray-700 px-2 sm:px-3 py-1 rounded-full text-xs hover:bg-gray-600 transition-colors text-white">
                   {tag}
                 </span>
               ))}
@@ -55,10 +55,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
           </div>
           <div className="w-full lg:w-80 h-48 sm:h-64">
             <Link to={`/post/${post.id}`}>
-              <img 
-                src={post.imageUrl} 
-                alt={post.title} 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+              <img
+                src={post.imageUrl}
+                alt={post.title}
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer pr-5 pt-10"
               />
             </Link>
           </div>
@@ -71,9 +71,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
     <article className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-750 transition-all duration-300 group">
       <Link to={`/post/${post.id}`}>
         <div className="aspect-video overflow-hidden">
-          <img 
-            src={post.imageUrl} 
-            alt={post.title} 
+          <img
+            src={post.imageUrl}
+            alt={post.title}
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
           />
         </div>
